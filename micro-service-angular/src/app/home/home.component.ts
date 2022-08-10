@@ -8,10 +8,11 @@ import { ProduitService } from "../service/produit.service";
 
 
 @Component({
-    templateUrl: './home.Component.html',
+
+    templateUrl: './home.component.html',
   })
   export class HomeComponent implements OnInit {
-  
+
     public headerRow: string[];
 
 
