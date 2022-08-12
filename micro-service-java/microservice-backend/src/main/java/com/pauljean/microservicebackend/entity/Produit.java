@@ -1,5 +1,10 @@
 package com.pauljean.microservicebackend.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "produit")
 public class Produit {
@@ -21,49 +28,9 @@ public class Produit {
 	@Size(max = 100)
 	private String categorie;
 	private Double prix;
-	
-	public Produit() {
-		
-	}
-	
-	public Produit(String nom, String categorie, Double prix ) {
-		this.nom=nom;
-		this.categorie=categorie;
-		this.prix=prix;
-		
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
-
-	public Double getPrix() {
-		return prix;
-	}
-
-	public void setPrix(Double prix) {
-		this.prix = prix;
-	}
-		
+	@Value("${some.key:true}")
+	private boolean disponible; //si le livre est encore disponible ou pas
+	@Value("${some.key:false}")
+	private boolean special; // pour distinguer si le livre est special ou pas et peut etre emprunter par un visiteur ou un abonne
 
 }

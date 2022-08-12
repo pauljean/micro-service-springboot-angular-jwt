@@ -41,6 +41,16 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+                </dependency>
+
 		<!--pas besion parceque c'est le service de configuration qui enregistrera les configuration du service-eureka
 		et on a pas besion d'enregistrer le service de config dans eureka-->
 		<!--
