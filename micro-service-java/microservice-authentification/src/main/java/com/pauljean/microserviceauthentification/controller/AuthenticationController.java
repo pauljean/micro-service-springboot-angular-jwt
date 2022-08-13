@@ -75,11 +75,11 @@ public class AuthenticationController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
-		Set<String> strRoles = signUpRequest.getRole();
+		String strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
-		strRoles.forEach(role -> {
-			switch (role) {
+
+			switch (strRoles) {
 			case "admin":
 				Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
@@ -97,7 +97,7 @@ public class AuthenticationController {
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
 				roles.add(userRole);
 			}
-		});
+
 
 		user.setRoles(roles);
 		userRepository.save(user);

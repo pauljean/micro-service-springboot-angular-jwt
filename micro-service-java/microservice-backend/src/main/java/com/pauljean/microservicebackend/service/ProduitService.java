@@ -1,62 +1,24 @@
 package com.pauljean.microservicebackend.service;
 
-import com.pauljean.microservicebackend.dao.IProduitDao;
 import com.pauljean.microservicebackend.entity.Produit;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@Transactional
-public class ProduitService implements ProduitServiceInt{
+public interface ProduitService {
 
-    @Autowired
-    private IProduitDao iProduitDao;
+    // Liste des livres disponible
+    public List<Produit> livresDisponible();
 
-    @Override
-    public List<Produit> livresDisponible() {
+    // emprunter un livre
+    public Produit emprunterLivre(String nom);
 
-        return iProduitDao.findByDisponible(true);
-    }
+    //Restituer un livre
+    public Produit restituerLivre(String nom);
 
-    @Override
-    public Produit emprunterLivre(String nom) {
+    // ajouter un livre
+    public Produit ajouterLivre(Produit p);
 
-            Produit produit=iProduitDao.findByNom(nom);
-            if (produit==null) throw new RuntimeException("Ce livre n'existe pas");
-            produit.setDisponible(false);
-            iProduitDao.save(produit);
-        return produit;
-    }
-
-    @Override
-    public Produit restituerLivre(String nom) {
-
-        Produit produit=iProduitDao.findByNom(nom);
-        produit.setDisponible(true);
-        iProduitDao.save(produit);
-        return produit;
-    }
-
-
-    @Override
-    public Produit ajouterLivre(Produit p) {
-           Produit produit=iProduitDao.findByNom(p.getNom());
-           if (produit !=null) throw new RuntimeException("Ce livre existe deja");
-
-        return iProduitDao.save(p);
-    }
-
-    @Override
-    public List<Produit> livresEmprunter() {
-        return  iProduitDao.findByDisponible(false);
-
-    }
-
-
-
+    // Liste des livres empruntes
+    public List<Produit> livresEmprunter();
 
 }

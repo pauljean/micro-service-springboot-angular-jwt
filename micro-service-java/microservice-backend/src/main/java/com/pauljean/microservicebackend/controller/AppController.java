@@ -2,7 +2,7 @@ package com.pauljean.microservicebackend.controller;
 
 import java.util.List;
 
-import com.pauljean.microservicebackend.service.ProduitService;
+import com.pauljean.microservicebackend.service.ProduitServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.pauljean.microservicebackend.dao.IProduitDao;
+import com.pauljean.microservicebackend.dao.ProduitRepository;
 import com.pauljean.microservicebackend.entity.Produit;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -19,11 +19,11 @@ import com.pauljean.microservicebackend.entity.Produit;
 public class AppController {
 
 	@Autowired
-	ProduitService produitService;
+	ProduitServiceImpl produitServiceImpl;
 	private Logger log = LoggerFactory.getLogger(AppController.class);
 
 	@Autowired
-	private IProduitDao iProduitDao;
+	private ProduitRepository produitRepository;
 
 	@RequestMapping("/hello")
 	public ResponseEntity<String> helloWorld() {
@@ -48,7 +48,7 @@ public class AppController {
 
 		log.info("liste des produits !!!");
 
-		List<Produit> produits = iProduitDao.findAll();
+		List<Produit> produits = produitRepository.findAll();
 
 		log.info("list produits {} : ", produits);
 
@@ -60,7 +60,7 @@ public class AppController {
 	public ResponseEntity<List<Produit>> produitsDisponible(){
 
 		log.info("produits disponibles");
-		List<Produit> produits= produitService.livresDisponible();
+		List<Produit> produits= produitServiceImpl.livresDisponible();
 		log.info("list produits {} : ", produits);
 		return new ResponseEntity<List<Produit>>(produits,HttpStatus.OK);
 	}
@@ -68,7 +68,7 @@ public class AppController {
 	public ResponseEntity<Produit> emprunterProduit(@PathVariable(name = "nom")String nom)
 	{
 		log.info("emprunter un produit");
-		Produit produit=produitService.emprunterLivre(nom);
+		Produit produit= produitServiceImpl.emprunterLivre(nom);
 		log.info(" produit emprunter {} : ", produit);
 		return new ResponseEntity<Produit>(produit,HttpStatus.OK);
 	}
@@ -76,7 +76,7 @@ public class AppController {
 	public ResponseEntity<Produit> restituerProduit(@PathVariable(name = "nom")String nom)
 	{
 		log.info("restituer un produit");
-		Produit produit= produitService.restituerLivre(nom);
+		Produit produit= produitServiceImpl.restituerLivre(nom);
 		log.info(" produit restituer {} : ", produit);
 		return new ResponseEntity<Produit>(produit,HttpStatus.OK);
 	}
@@ -85,7 +85,7 @@ public class AppController {
 	public ResponseEntity<Produit> ajouterProduit(@RequestBody Produit p)
 	{
 		log.info("ajouter un produit");
-		Produit produit=produitService.ajouterLivre(p);
+		Produit produit= produitServiceImpl.ajouterLivre(p);
 		log.info(" produit ajouter {} : ", p);
 		return new ResponseEntity<Produit>(produit,HttpStatus.OK);
 	}
@@ -93,7 +93,7 @@ public class AppController {
 	public  ResponseEntity<List<Produit>> produitsEmprunte(){
 
 		log.info("produits empruntes");
-		List<Produit> produits=produitService.livresEmprunter();
+		List<Produit> produits= produitServiceImpl.livresEmprunter();
 		log.info(" Listes produit {} : ", produits);
 		return new ResponseEntity<List<Produit>>(produits,HttpStatus.OK);
 
