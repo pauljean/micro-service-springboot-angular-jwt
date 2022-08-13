@@ -5,35 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d32f9c2-49b5-4447-98e1-6053f0dfa590" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/model/AddRoletoUserForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/config/jwt/JwtAuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/config/jwt/JwtAuthTokenFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/model/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/model/SignUpForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/MicroserviceBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/MicroserviceBackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/dao/IProduitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/dao/ProduitRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/service/ProduitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/service/ProduitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/service/ProduitServiceInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-backend/target/classes/com/pauljean/microservicebackend/MicroserviceBackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/target/classes/com/pauljean/microservicebackend/MicroserviceBackendApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-config/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-config/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-config/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-config/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-config/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/model/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/model/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/service/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/controller/AuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/controller/AuthenticationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/model/LoginForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/model/LoginForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/service/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/service/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/service/AccountServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,9 +58,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/home/parker/security-service"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.pauljean.microserviceauthentification.model" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="MicroserviceAuthentificationApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.pauljean.microserviceauthentification.MicroserviceAuthentificationApplication" />

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import com.pauljean.microserviceauthentification.model.AddRoletoUserForm;
+import com.pauljean.microserviceauthentification.service.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,15 +41,16 @@ public class AuthenticationController {
 
 	@Autowired
 	UserRepository userRepository;
-
 	@Autowired
 	RoleRepository roleRepository;
-
 	@Autowired
 	PasswordEncoder encoder;
-
 	@Autowired
 	JwtProvider jwtProvider;
+	@Autowired
+	AccountServiceImpl accountService;
+
+
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
@@ -75,11 +78,12 @@ public class AuthenticationController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
-		String strRoles = signUpRequest.getRole();
+		//Un  Utilisateur par defaut a un Role User, pas besion de l'entree dans la requette Post
+		//String strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
-
-			switch (strRoles) {
+			//Un  Utilisateur par defaut a un Role User et l'administrteur peut lui ajouter un role si besion
+			/*switch (strRoles) {
 			case "admin":
 				Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
@@ -96,13 +100,53 @@ public class AuthenticationController {
 				Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
 				roles.add(userRole);
-			}
+			}*/
 
-
+		Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+				.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+		roles.add(userRole);
 		user.setRoles(roles);
 		userRepository.save(user);
 
 		return ResponseEntity.ok().body("User registered successfully!");
 	}
+
+	@PostMapping("/addRoleToUser")
+	public ResponseEntity<String> addRoleToUser(@Valid @RequestBody AddRoletoUserForm addRoletoUserFormRequest)
+	{
+		if (!userRepository.existsByUsername(addRoletoUserFormRequest.getUsername())){
+			return new ResponseEntity<String>("Fail -> Username don't exist!", HttpStatus.BAD_REQUEST);
+		}
+
+		Role role = null;
+		//Un  Utilisateur par defaut a un Role User et l'administrteur peut lui ajouter un role si besion
+			switch (addRoletoUserFormRequest.getRole()) {
+			case "admin":
+				Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
+						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+				role=adminRole;
+
+				break;
+			case "pm":
+				Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
+						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+				role=pmRole;
+				break;
+			default:
+				Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+				role=userRole;
+			}
+
+
+
+		accountService.addRoleToUser(addRoletoUserFormRequest.getUsername(), role);
+
+		return ResponseEntity.ok().body("Role to User added successfully!");
+
+	}
+
+
+
 
 }

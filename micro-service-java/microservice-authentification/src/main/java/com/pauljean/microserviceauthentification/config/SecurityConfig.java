@@ -55,10 +55,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
+		//http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
+		http.authorizeRequests().antMatchers("/users/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/roles/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/addRoleToUser/**").hasAnyAuthority("ROLE_ADMIN");
+
+
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll().anyRequest()
 
 				.authenticated().and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

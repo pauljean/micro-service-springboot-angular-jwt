@@ -2,16 +2,20 @@ package com.pauljean.microserviceauthentification;
 
 import com.pauljean.microserviceauthentification.entity.Role;
 import com.pauljean.microserviceauthentification.entity.RoleName;
+import com.pauljean.microserviceauthentification.entity.User;
 import com.pauljean.microserviceauthentification.repository.RoleRepository;
+import com.pauljean.microserviceauthentification.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class MicroserviceAuthentificationApplication {
@@ -35,7 +39,8 @@ public class MicroserviceAuthentificationApplication {
 	}
 
 	@Bean
-	CommandLineRunner start(RepositoryRestConfiguration restConfiguration, RoleRepository roleRepository)
+	CommandLineRunner start(RepositoryRestConfiguration restConfiguration, RoleRepository roleRepository,
+							UserRepository userRepository, PasswordEncoder encoder)
 	{
 		return Args-> {
 			restConfiguration.exposeIdsFor(Role.class);
@@ -44,6 +49,13 @@ public class MicroserviceAuthentificationApplication {
 			roles.add(new Role(RoleName.ROLE_PM));
 			roles.add(new Role(RoleName.ROLE_ADMIN));
 			roleRepository.saveAll(roles);
+
+			User user=new User("tatsinda","blanc","blanc@gmail.com",
+					encoder.encode("123456789"));
+			Optional<Role> role=roleRepository.findByName(RoleName.ROLE_ADMIN);
+			user.getRoles().add(role.get());
+			userRepository.save(user);
+
 
 		};
 	}

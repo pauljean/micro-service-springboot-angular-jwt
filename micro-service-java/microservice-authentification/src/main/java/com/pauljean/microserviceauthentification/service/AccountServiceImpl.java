@@ -18,11 +18,13 @@ public class AccountServiceImpl implements AccountService{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
     private RoleRepository roleRepository;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    @Override
+   /* @Override
     public User saveUser(String name, String userName, String email, String password) {
 
         if (userRepository.existsByUsername(userName)) throw new RuntimeException("User already exist");
@@ -37,19 +39,18 @@ public class AccountServiceImpl implements AccountService{
         addRoleToUser(userName,RoleName.ROLE_USER);
 
         return user;
-    }
+    }*/
 
-    @Override
+   /* @Override
     public Optional<User> loadUserByUsername(String username) {
         return userRepository.findByUsername(username);
-    }
+    }*/
 
     @Override
-    public void addRoleToUser(String username, RoleName rolename) {
+    public void addRoleToUser(String username, Role role) {
 
         Optional<User> user=userRepository.findByUsername(username);
-        Optional<Role> role=roleRepository.findByName(rolename);
-        user.get().getRoles().add(role.get());
+        user.get().getRoles().add(role);
 
     }
 }
