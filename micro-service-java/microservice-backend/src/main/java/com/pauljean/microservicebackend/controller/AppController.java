@@ -15,7 +15,7 @@ import com.pauljean.microservicebackend.entity.Produit;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/backend")
+@RequestMapping("/api/backend")
 public class AppController {
 
 	@Autowired

@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.pauljean.microservicezuulproxy.config.jwt.JwtAuthEntryPoint;
 import com.pauljean.microservicezuulproxy.config.jwt.JwtAuthTokenFilter;
-import com.pauljean.microservicezuulproxy.service.UserDetailsServiceImpl;
 
 
 
@@ -27,8 +26,7 @@ import com.pauljean.microservicezuulproxy.service.UserDetailsServiceImpl;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
-	UserDetailsServiceImpl userDetailsService;
+
 
 	@Autowired
 	private JwtAuthEntryPoint unauthorizedHandler;
@@ -38,36 +36,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new JwtAuthTokenFilter();
 	}
 
-	@Override
-	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
+
+		http.authorizeRequests().antMatchers("/api/auth/users/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/api/auth/roles/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/api/auth/addRoleToUser/**").hasAnyAuthority("ROLE_ADMIN");
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll().anyRequest()
 				.authenticated().and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
-	
-	   @Override
-	    public void configure(WebSecurity web) throws Exception {
-	        // Allow eureka client to be accessed without authentication
-	        web.ignoring().antMatchers("/*/")//
-	                .antMatchers("/eureka/**")//
-	                .antMatchers(HttpMethod.OPTIONS, "/**"); // Request type options should be allowed.
-	    }
+
+	  // @Override
+	   // public void configure(WebSecurity web) throws Exception {
+	         //Allow eureka client to be accessed without authentication
+	      //  web.ignoring().antMatchers("/*/")//
+	       //         .antMatchers("/eureka/**")//
+	           //     .antMatchers(HttpMethod.OPTIONS, "/**"); // Request type options should be allowed.
+	  //  }
 }

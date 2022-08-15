@@ -1,21 +1,17 @@
 package com.pauljean.microservicezuulproxy.config.jwt;
 
 import java.util.Date;
+import java.util.List;
 
+import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.pauljean.microservicezuulproxy.model.UserPrinciple;
+//import com.pauljean.microservicezuulproxy.model.UserPrinciple;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtProvider {
@@ -27,7 +23,7 @@ public class JwtProvider {
 
     @Value("${microservice.app.jwtExpiration}")
     private int jwtExpiration;
-
+/*
     public String generateJwtToken(Authentication authentication) {
 
         UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
@@ -39,7 +35,7 @@ public class JwtProvider {
 		                .signWith(SignatureAlgorithm.HS512, jwtSecret)
 		                .compact();
     }
-    
+*/
     public boolean validateJwtToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
@@ -55,15 +51,23 @@ public class JwtProvider {
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty -> Message: {}", e);
         }
-        
+
         return false;
     }
     
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
 			                .setSigningKey(jwtSecret)
+
 			                .parseClaimsJws(token)
 			                .getBody().getSubject();
+    }
+
+    public List<String> getRoleNameFromJwtToken(String token) {
+        return  Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody().get("roles", List.class);
     }
 	
 

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.Valid;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +28,14 @@ import com.pauljean.microservicezuulproxy.model.LoginForm;
 import com.pauljean.microservicezuulproxy.model.SignUpForm;
 import com.pauljean.microservicezuulproxy.repository.IRoleRepository;
 import com.pauljean.microservicezuulproxy.repository.IUserRepository;
+*/
 
+/*
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+*/
+/*
 public class AuthenticationController {
 
 	@Autowired
@@ -106,3 +110,4 @@ public class AuthenticationController {
 	}
 
 }
+*/

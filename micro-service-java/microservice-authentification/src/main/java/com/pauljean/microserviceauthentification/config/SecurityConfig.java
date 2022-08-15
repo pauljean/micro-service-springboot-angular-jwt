@@ -56,9 +56,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		//http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
-		http.authorizeRequests().antMatchers("/users/**").hasAnyAuthority("ROLE_ADMIN");
-		http.authorizeRequests().antMatchers("/roles/**").hasAnyAuthority("ROLE_ADMIN");
-		http.authorizeRequests().antMatchers("/addRoleToUser/**").hasAnyAuthority("ROLE_ADMIN");
+		//http.authorizeRequests().antMatchers("/**").permitAll();
+		http.authorizeRequests().antMatchers("/api/auth/users/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/api/auth/roles/**").hasAnyAuthority("ROLE_ADMIN");
+		http.authorizeRequests().antMatchers("/api/auth/addRoleToUser/**").hasAnyAuthority("ROLE_ADMIN");
 
 
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll().anyRequest()

@@ -12,8 +12,6 @@ public class MicroserviceZullProxyApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MicroserviceZullProxyApplication.class, args);
-
-		
 		    
 	}
 

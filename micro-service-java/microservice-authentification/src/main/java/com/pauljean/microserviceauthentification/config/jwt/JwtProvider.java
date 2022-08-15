@@ -1,7 +1,8 @@
 package com.pauljean.microserviceauthentification.config.jwt;
 
-import java.util.Date;
+import java.util.*;
 
+import com.pauljean.microserviceauthentification.entity.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,12 +32,20 @@ public class JwtProvider {
     public String generateJwtToken(Authentication authentication) {
 
         UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
+        Set<String> roles = new HashSet<>();
+        //List<String> roles = new ArrayList<>();
+
+        authentication.getAuthorities().forEach(a->{
+            roles.add(a.getAuthority());
+        });
 
         return Jwts.builder()
 		                .setSubject((userPrincipal.getUsername()))
+                        .claim("roles",roles.toArray(new String[roles.size()]))
 		                .setIssuedAt(new Date())
+                        .setIssuer("auth0")
 		                .setExpiration(new Date((new Date()).getTime() + jwtExpiration*1000))
-		                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+		                .signWith(SignatureAlgorithm.HS256, jwtSecret)
 		                .compact();
     }
     

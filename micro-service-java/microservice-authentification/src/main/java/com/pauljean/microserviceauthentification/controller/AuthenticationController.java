@@ -78,12 +78,14 @@ public class AuthenticationController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
-		//Un  Utilisateur par defaut a un Role User, pas besion de l'entree dans la requette Post
+		//Un  Utilisateur par defaut a un Role User, pas besion de l'entree dans la requette Post//
 		//String strRoles = signUpRequest.getRole();
+
+		String strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
 			//Un  Utilisateur par defaut a un Role User et l'administrteur peut lui ajouter un role si besion
-			/*switch (strRoles) {
+			switch (strRoles) {
 			case "admin":
 				Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
@@ -100,11 +102,12 @@ public class AuthenticationController {
 				Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
 						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
 				roles.add(userRole);
-			}*/
+			}
 
-		Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+		/*Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
 				.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-		roles.add(userRole);
+		roles.add(userRole);*/
+
 		user.setRoles(roles);
 		userRepository.save(user);
 
