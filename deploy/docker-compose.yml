@@ -1,0 +1,5 @@
+#docker-compose file
+
+# un contenaire pour le backend en java
+# un contenaire pour le front angular 
+# un contenaire pour la bd

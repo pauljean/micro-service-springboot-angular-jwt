@@ -1,0 +1,7 @@
+#! /bin/bash
+
+#build all java project
+#build angular project
+#create docker images (run docker-compose)
+
+#push the images to docker hub
