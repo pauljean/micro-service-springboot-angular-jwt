@@ -22,6 +22,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
+import org.springframework.beans.factory.annotation.Value;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -56,6 +58,7 @@ public class User{
     @NotBlank
     @Size(min=6, max = 100)
     private String password;
+    @Value("${some.key:true}")
     private boolean actived; //si l'utilisateur est desactiver ou pas
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", 

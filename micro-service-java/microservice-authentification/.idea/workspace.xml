@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d32f9c2-49b5-4447-98e1-6053f0dfa590" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/userData.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-backend/src/main/resources/produit.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pauljean/microserviceauthentification/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/roles.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/MicroserviceAuthentificationApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pauljean/microserviceauthentification/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/roles.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/MicroserviceBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/java/com/pauljean/microservicebackend/MicroserviceBackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-backend/target/classes/com/pauljean/microservicebackend/MicroserviceBackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-backend/target/classes/com/pauljean/microservicebackend/MicroserviceBackendApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-config/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-config/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

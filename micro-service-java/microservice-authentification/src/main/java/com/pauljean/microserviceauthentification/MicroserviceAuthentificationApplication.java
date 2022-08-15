@@ -22,6 +22,7 @@ import java.util.Optional;
 public class MicroserviceAuthentificationApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MicroserviceAuthentificationApplication.class, args);
 		
 		
@@ -44,12 +45,7 @@ public class MicroserviceAuthentificationApplication {
 							UserRepository userRepository, PasswordEncoder encoder)
 	{
 		return Args-> {
-			restConfiguration.exposeIdsFor(Role.class);
-			List<Role> roles=new ArrayList<>();
-			roles.add(new Role(RoleName.ROLE_USER));
-			roles.add(new Role(RoleName.ROLE_PM));
-			roles.add(new Role(RoleName.ROLE_ADMIN));
-			roleRepository.saveAll(roles);
+
 
 			User user=new User("tatsinda","blanc","blanc@gmail.com",
 					encoder.encode("123456789"));

@@ -24,12 +24,12 @@ public class MicroserviceBackendApplication {
 	{
 		return Args-> {
 			restConfiguration.exposeIdsFor(Produit.class);
-			List<Produit> produits=new ArrayList<>();
+			/*List<Produit> produits=new ArrayList<>();
 			produits.add(new Produit(1,"Jeu de dame","apprentissage",4.5,true,false));
 			produits.add(new Produit(2,"Chasse au tresor","Aventure",9.5,true,true));
 			produits.add(new Produit(3,"Femme de fer","Romance",5.2,true,true));
 			produits.add(new Produit(4,"De zero a hero","Action",4.5,true,false));
-			produitRepository.saveAll(produits);
+			produitRepository.saveAll(produits);*/
 
 		};
 	}
